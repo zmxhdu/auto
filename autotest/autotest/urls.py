@@ -25,4 +25,6 @@ urlpatterns = [
     # Uncomment the next line to enable the admin:
     path('admin/', admin.site.urls),
     path('login/', views.login),
+    path('home/', views.home),
+    path('logout/', views.logout)
 ]

@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="apitest\templates\apitest\index.html" />
+    <Content Include="apitest\templates\home.html" />
     <Content Include="apitest\templates\login.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
