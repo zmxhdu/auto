@@ -41,11 +41,20 @@
     <Compile Include="autotest\settings.py" />
     <Compile Include="autotest\urls.py" />
     <Compile Include="autotest\wsgi.py" />
+    <Compile Include="product\admin.py" />
+    <Compile Include="product\apps.py" />
+    <Compile Include="product\migrations\__init__.py" />
+    <Compile Include="product\models.py" />
+    <Compile Include="product\tests.py" />
+    <Compile Include="product\proviews.py" />
+    <Compile Include="product\__init__.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="apitest\templates\apitest\index.html" />
     <Content Include="apitest\templates\home.html" />
     <Content Include="apitest\templates\login.html" />
+    <Content Include="product\templates\product\index.html" />
+    <Content Include="product\templates\product_manage.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +63,10 @@
     <Folder Include="apitest\templates\" />
     <Folder Include="apitest\templates\apitest\" />
     <Folder Include="autotest\" />
+    <Folder Include="product\" />
+    <Folder Include="product\migrations\" />
+    <Folder Include="product\templates\" />
+    <Folder Include="product\templates\product\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 
