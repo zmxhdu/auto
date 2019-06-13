@@ -50,7 +50,10 @@
     <Compile Include="product\__init__.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="apitest\templates\apistep_manage.html" />
+    <Content Include="apitest\templates\apis_manage.html" />
     <Content Include="apitest\templates\apitest\index.html" />
+    <Content Include="apitest\templates\apitest_manage.html" />
     <Content Include="apitest\templates\home.html" />
     <Content Include="apitest\templates\login.html" />
     <Content Include="product\templates\product\index.html" />
