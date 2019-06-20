@@ -36,6 +36,13 @@
     <Compile Include="apitest\tests.py" />
     <Compile Include="apitest\views.py" />
     <Compile Include="apitest\__init__.py" />
+    <Compile Include="apptest\admin.py" />
+    <Compile Include="apptest\apps.py" />
+    <Compile Include="apptest\migrations\__init__.py" />
+    <Compile Include="apptest\models.py" />
+    <Compile Include="apptest\tests.py" />
+    <Compile Include="apptest\appviews.py" />
+    <Compile Include="apptest\__init__.py" />
     <Compile Include="bug\admin.py" />
     <Compile Include="bug\apps.py" />
     <Compile Include="bug\migrations\__init__.py" />
@@ -70,6 +77,9 @@
     <Content Include="apitest\templates\apitest_manage.html" />
     <Content Include="apitest\templates\home.html" />
     <Content Include="apitest\templates\login.html" />
+    <Content Include="apptest\templates\appcasestep_manage.html" />
+    <Content Include="apptest\templates\appcase_manage.html" />
+    <Content Include="apptest\templates\apptest\index.html" />
     <Content Include="bug\templates\bug\index.html" />
     <Content Include="bug\templates\bug_manage.html" />
     <Content Include="product\templates\product\index.html" />
@@ -84,6 +94,10 @@
     <Folder Include="apitest\migrations\" />
     <Folder Include="apitest\templates\" />
     <Folder Include="apitest\templates\apitest\" />
+    <Folder Include="apptest\" />
+    <Folder Include="apptest\migrations\" />
+    <Folder Include="apptest\templates\" />
+    <Folder Include="apptest\templates\apptest\" />
     <Folder Include="autotest\" />
     <Folder Include="bug\" />
     <Folder Include="bug\migrations\" />
