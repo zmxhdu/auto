@@ -69,6 +69,13 @@
     <Compile Include="set\tests.py" />
     <Compile Include="set\setviews.py" />
     <Compile Include="set\__init__.py" />
+    <Compile Include="webtest\admin.py" />
+    <Compile Include="webtest\apps.py" />
+    <Compile Include="webtest\migrations\__init__.py" />
+    <Compile Include="webtest\models.py" />
+    <Compile Include="webtest\tests.py" />
+    <Compile Include="webtest\webviews.py" />
+    <Compile Include="webtest\__init__.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="apitest\templates\apistep_manage.html" />
@@ -88,6 +95,9 @@
     <Content Include="set\templates\set\index.html" />
     <Content Include="set\templates\set_manage.html" />
     <Content Include="set\templates\set_user.html" />
+    <Content Include="webtest\templates\webcasestep_manage.html" />
+    <Content Include="webtest\templates\webcase_manage.html" />
+    <Content Include="webtest\templates\webtest\index.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="apitest\" />
@@ -111,6 +121,10 @@
     <Folder Include="set\migrations\" />
     <Folder Include="set\templates\" />
     <Folder Include="set\templates\set\" />
+    <Folder Include="webtest\" />
+    <Folder Include="webtest\migrations\" />
+    <Folder Include="webtest\templates\" />
+    <Folder Include="webtest\templates\webtest\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 
