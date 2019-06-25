@@ -54,3 +54,7 @@ def apis_manage(request):
     apis_list = Apis.objects.all()
     username = request.session.get('user', '')
     return render(request, "apis_manage.html", {"user":username, "apiss":apis_list})
+
+
+def left(request):
+    return render(request, "left.html")

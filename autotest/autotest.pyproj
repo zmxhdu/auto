@@ -83,7 +83,9 @@
     <Content Include="apitest\templates\apitest\index.html" />
     <Content Include="apitest\templates\apitest_manage.html" />
     <Content Include="apitest\templates\home.html" />
+    <Content Include="apitest\templates\left.html" />
     <Content Include="apitest\templates\login.html" />
+    <Content Include="apitest\templates\report.html" />
     <Content Include="apptest\templates\appcasestep_manage.html" />
     <Content Include="apptest\templates\appcase_manage.html" />
     <Content Include="apptest\templates\apptest\index.html" />
