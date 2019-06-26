@@ -56,5 +56,13 @@ def apis_manage(request):
     return render(request, "apis_manage.html", {"user":username, "apiss":apis_list})
 
 
+@login_required
+def apisearch(request):
+    username = request.session.get('user', '')
+    search_apitestname = request.GET.get('apitestname', '')
+    apitest_list = Apitest.objects.filter(apitestname__icontains=search_apitestname)
+    return render(request, "apitest_manage.html", {"user":username, "apitests":apitest_list})
+
+
 def left(request):
     return render(request, "left.html")
