@@ -79,5 +79,32 @@
         </table>
     </div>
 </div>
+
+<!-- 翻页 -->
+<span style="position:absolute; right:100px; bottom:30px;">
+<div class="container">
+    <ul class="pagination" id="pager">
+        {% if webcasesteps.has_previous %}
+        <li class="previous"><a href="/webcasestep_manage/?page={{ webcasesteps.previous_page_number }}">上一页</a></li>
+        {% else %}
+        <li class="previous disabled"><a href="#">上一页</a></li>
+        {% endif %}
+
+        {% for num in webcasesteps.paginator.page_range %}
+        {% if num == currengPage %}
+        <li class="item active"><a href="/webcasestep_manage/?page={{ num }}">{{ num }}</a></li>
+        {% else %}
+        <li class="item"><a href="/webcasestep_manage/?page={{ num }}">{{ num }}</a></li>
+        {% endif %}
+        {% endfor %}
+
+        {% if webcasesteps.has_next %}
+        <li class="next"><a href="/webcasestep_manage/?page={{ webcasesteps.next_page_number }}">下一页</a></li>
+        {% else %}
+        <li class="next disabled"><a href="#">下一页</a></li>
+        {% endif %}
+    </ul>
+</div>
+
 </body>
 </html>

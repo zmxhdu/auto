@@ -7,6 +7,20 @@
     {% bootstrap_css %}
     {% bootstrap_javascript %}
     <title>自动化测试平台</title>
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
+    <script type="text/javascript" src="/admin/jsi18n/"></script>
+    <script type="text/javascript" src="/static/admin/js/vendir/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+    <script type="text/javascript" src="/static/admin/js/core.js"></script>
+    <script type="text/javascript" src="/static/admin/js/admin/RealtedObjectLookups.js"></script>
+    <script type="text/javascript" src="/static/admin/js/actions.js"></script>
+    <script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+    <script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+    <script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+
+    <meta name="viewport" content="user-scalabel=no, width=device-width, initial-scale=1.0, maximum-sacle=1.0" />
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css" />
+    <meta name="robots" content="NONE, NOARCHIVE" />
 </head>
 
 <body role="document">
@@ -28,6 +42,21 @@
         {% csrf_token %}
         <input type="search" name="productname" placeholder="名称" required />
         <button type="submit">搜索</button>
+<!-- 增加产品 -->
+<div style="float:right; width:73%">
+    <select name="Product" id="id_Product">
+        <option value="" selected>----产品----</option>
+    </select>
+    <a class="related-widget-wrapper-link change-related" id="change_id_Product" 
+       data-href-template="/admin/product/product/__fk__/change/?_to_field=id&amp;_popup=1"
+       title="更改选中的产品">
+        <img src="/static/admin/img/icon-changelink.svg" alt="修改" />
+    </a>
+    <a class="related-widget-wrapper-link add-related" id="add_id_Product" 
+       href="/admin/product/product/add/?_to_field=id&amp;_popup=1"
+       title="添加产品">
+        <img src="/static/admin/img/icon-addlink.svg" alt="增加" />
+    </a>
     </form>
 </div>
 
@@ -43,6 +72,8 @@
                     <th>产品描述</th>
                     <th>产品负责人</th>
                     <th>创建时间</th>
+                    <th>编辑</th>
+                    <th>删除</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,11 +84,52 @@
                     <td>{{ product.productdesc }}</td>
                     <td>{{ product.producter }}</td>
                     <td>{{ product.create_time }}</td>
+                    <td><a style="color:lightblue" class="related-widget-wrapper-link add-related" id="add_id_Product"
+                           href="../admin/product/product/{{ product.id }}/change/?_to_field=id&_popup=1">
+                        <img src="/static/admin/img/icon-changelink.svg" />
+                        </a>
+                    </td>
+                    <td><a style="color:lightblue" class="related-widget-wrapper-link add-related" id="add_id_Product"
+                           href="../admin/product/product/{{ product.id }}/delete/?_to_field=id&_popup=1">
+                        <img src="/static/admin/img/icon-deletelink.svg" />
+                        </a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
+
+<!-- 翻页 -->
+<span style="position:absolute; right:100px; bottom:30px;">
+<div style="position:absolute; right:100px; width:100px;">
+    <tr><th>总数</th><td>{{ productcounts }}</td></tr>
+</div>
+
+<div class="container">
+    <ul class="pagination" id="pager">
+        {% if products.has_previous %}
+        <li class="previous"><a href="/product_manage/?page={{ products.previous_page_number }}">上一页</a></li>
+        {% else %}
+        <li class="previous disabled"><a href="#">上一页</a></li>
+        {% endif %}
+
+        {% for num in products.paginator.page_range %}
+        {% if num == currengPage %}
+        <li class="item active"><a href="/product_manage/?page={{ num }}">{{ num }}</a></li>
+        {% else %}
+        <li class="item"><a href="/product_manage/?page={{ num }}">{{ num }}</a></li>
+        {% endif %}
+        {% endfor %}
+
+        {% if products.has_next %}
+        <li class="next"><a href="/product_manage/?page={{ products.next_page_number }}">下一页</a></li>
+        {% else %}
+        <li class="next disabled"><a href="#">下一页</a></li>
+        {% endif %}
+    </ul>
+</div>
+
 </body>
 </html>

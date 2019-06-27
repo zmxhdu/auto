@@ -7,6 +7,20 @@
     {% bootstrap_javascript %}
     <meta charset="utf-8" />
     <title>自动化测试平台</title>
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
+    <script type="text/javascript" src="/admin/jsi18n/"></script>
+    <script type="text/javascript" src="/static/admin/js/vendir/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+    <script type="text/javascript" src="/static/admin/js/core.js"></script>
+    <script type="text/javascript" src="/static/admin/js/admin/RealtedObjectLookups.js"></script>
+    <script type="text/javascript" src="/static/admin/js/actions.js"></script>
+    <script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+    <script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+    <script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+
+    <meta name="viewport" content="user-scalabel=no, width=device-width, initial-scale=1.0, maximum-sacle=1.0" />
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css" />
+    <meta name="robots" content="NONE, NOARCHIVE" />
 </head>
 
 <body role="document">
@@ -27,7 +41,22 @@
     <form class="navbar-form" method="get" action="/bugsearch/">
         {% csrf_token %}
         <input type="search" name="bugname" placeholder="名称" required />
-        <button type="submit">搜索</button>
+        <button type="submit">搜索</button>   
+<!-- 增加bug -->
+<div style="float:right; width:73%">
+    <select name="Bug" id="Bug">
+        <option value="" selected>----bug----</option>
+    </select>
+    <a class="related-widget-wrapper-link change-related" id="change_id_Bug" 
+       data-href-template="/admin/bug/bug/__fk__/change/?_to_field=id&amp;_popup=1"
+       title="更改选中的bug">
+        <img src="/static/admin/img/icon-changelink.svg" alt="修改" />
+    </a>
+    <a class="related-widget-wrapper-link add-related" id="add_id_Bug" 
+       href="/admin/bug/bug/add/?_to_field=id&amp;_popup=1"
+       title="添加bug">
+        <img src="/static/admin/img/icon-addlink.svg" alt="增加" />
+    </a>
     </form>
 </div>
 
@@ -47,6 +76,8 @@
                     <th>创建人</th>
                     <th>分配给</th>
                     <th>创建时间</th>
+                    <th>编辑</th>
+                    <th>删除</th>
                 </tr>
             </thead>
             <tbody>
@@ -61,11 +92,52 @@
                     <td>{{ bug.bugcreater }}</td>
                     <td>{{ bug.bugassign }}</td>
                     <td>{{ bug.created_time }}</td>
+                    <td><a style="color:lightblue" class="related-widget-wrapper-link add-related" id="add_id_Bug"
+                           href="../admin/bug/bug/{{ bug.id }}/change/?_to_field=id&_popup=1">
+                        <img src="/static/admin/img/icon-changelink.svg" />
+                        </a>
+                    </td>
+                    <td><a style="color:lightblue" class="related-widget-wrapper-link add-related" id="add_id_Bug"
+                           href="../admin/bug/bug/{{ bug.id }}/delete/?_to_field=id&_popup=1">
+                        <img src="/static/admin/img/icon-deletelink.svg" />
+                        </a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
+
+<!-- 翻页 -->
+<span style="position:absolute; right:100px; bottom:30px;">
+<div style="position:absolute; right:100px; width:100px;">
+    <tr><th>总数</th><td>{{ bugcounts }}</td></tr>
+</div>
+
+<div class="container">
+    <ul class="pagination" id="pager">
+        {% if bugs.has_previous %}
+        <li class="previous"><a href="/bug_manage/?page={{ bugs.previous_page_number }}">上一页</a></li>
+        {% else %}
+        <li class="previous disabled"><a href="#">上一页</a></li>
+        {% endif %}
+
+        {% for num in bugs.paginator.page_range %}
+        {% if num == currengPage %}
+        <li class="item active"><a href="/bug_manage/?page={{ num }}">{{ num }}</a></li>
+        {% else %}
+        <li class="item"><a href="/bug_manage/?page={{ num }}">{{ num }}</a></li>
+        {% endif %}
+        {% endfor %}
+
+        {% if bugs.has_next %}
+        <li class="next"><a href="/bug_manage/?page={{ bugs.next_page_number }}">下一页</a></li>
+        {% else %}
+        <li class="next disabled"><a href="#">下一页</a></li>
+        {% endif %}
+    </ul>
+</div>
+
 </body>
 </html>

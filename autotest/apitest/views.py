@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import auth
 from django.contrib.auth import authenticate, login
 from apitest.models import Apitest, Apistep, Apis
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 # Create your views here.
@@ -39,13 +40,32 @@ def logout(request):
 def apitest_manage(request):
     apitest_list = Apitest.objects.all()
     username = request.session.get('user', '')
-    return render(request, "apitest_manage.html", {"user":username, "apitests":apitest_list})
+    paginator = Paginator(apitest_list, 8)
+    page = request.GET.get('page', 1)
+    currentPage = int(page)
+    try:
+        apitest_list = paginator.page(page)
+    except PageNotAnInteger:
+        apitest_list = paginator.page(1)
+    except EmptyPage:
+        apitest_list = paginator.page(paginator.num_pages)
+    apitest_count = Apitest.objects.all().count()
+    return render(request, "apitest_manage.html", {"user":username, "apitests":apitest_list, "apitestcounts": apitest_count})
 
 
 @login_required
 def apistep_manage(request):
     apistep_list = Apistep.objects.all()
     username = request.session.get('user', '')
+    paginator = Paginator(apistep_list, 8)
+    page = request.GET.get('page', 1)
+    currentPage = int(page)
+    try:
+        apistep_list = paginator.page(page)
+    except PageNotAnInteger:
+        apistep_list = paginator.page(1)
+    except EmptyPage:
+        apistep_list = paginator.page(paginator.num_pages)
     return render(request, "apistep_manage.html", {"user":username, "apisteps":apistep_list})
 
 
@@ -53,7 +73,17 @@ def apistep_manage(request):
 def apis_manage(request):
     apis_list = Apis.objects.all()
     username = request.session.get('user', '')
-    return render(request, "apis_manage.html", {"user":username, "apiss":apis_list})
+    paginator = Paginator(apis_list, 8)
+    page = request.GET.get('page', 1)
+    currentPage = int(page)
+    try:
+        apis_list = paginator.page(page)
+    except PageNotAnInteger:
+        apis_list = paginator.page(1)
+    except EmptyPage:
+        apis_list = paginator.page(paginator.num_pages)
+    apis_count = Apis.objects.all().count()
+    return render(request, "apis_manage.html", {"user":username, "apiss":apis_list, "apiscounts":apis_count})
 
 
 @login_required
