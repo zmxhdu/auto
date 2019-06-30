@@ -21,7 +21,7 @@ def appcase_manage(request):
         appcase_list = paginator.page(1)
     except EmptyPage:
         appcase_list = paginator.page(paginator.num_pages)
-    appcase_count = Apitest.objects.all().count()
+    appcase_count = Appcase.objects.all().count()
     return render(request, "appcase_manage.html", {"user":username, "appcases":appcase_list, "appcasecounts":appcase_count})
 
 
@@ -29,6 +29,8 @@ def appcase_manage(request):
 def appcasestep_manage(request):
     appcasestep_list = Appcasestep.objects.all()
     username = request.session.get('user', '')
+    appcaseid = request.GET.get('appcase.id', None)
+    appcsae = Appcase.objects.get(id=appcaseid)
     paginator = Paginator(appcasestep_list, 8)
     page = request.GET.get('page', 1)
     currentPage = int(page)
@@ -38,7 +40,7 @@ def appcasestep_manage(request):
         appcasestep_list = paginator.page(1)
     except EmptyPage:
         appcasestep_list = paginator.page(paginator.num_pages)
-    return render(request, "appcasestep_manage.html", {"user":username, "appcasesteps":appcasestep_list})
+    return render(request, "appcasestep_manage.html", {"user":username, "appcsae":appcsae, "appcasesteps":appcasestep_list})
 
 
 @login_required

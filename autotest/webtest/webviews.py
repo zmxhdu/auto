@@ -29,6 +29,8 @@ def webcase_manage(request):
 def webcasestep_manage(request):
     webcasestep_list = Webcasestep.objects.all()
     username = request.session.get('user', '')
+    webcaseid = request.GET.get('webcase.id', None)
+    webcase = Webcase.objects.get(id=webcaseid)
     paginator = Paginator(webcasestep_list, 8)
     page = request.GET.get('page', 1)
     currentPage = int(page)
@@ -38,7 +40,7 @@ def webcasestep_manage(request):
         webcasestep_list = paginator.page(1)
     except EmptyPage:
         webcasestep_list = paginator.page(paginator.num_pages)
-    return render(request, "webcasestep_manage.html", {"user":username, "webcasesteps":webcasestep_list})
+    return render(request, "webcasestep_manage.html", {"user":username, "webcase":webcase, "webcasesteps":webcasestep_list})
 
 
 @login_required
