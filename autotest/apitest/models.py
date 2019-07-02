@@ -43,8 +43,8 @@ class Apis(models.Model):
     apiurl = models.CharField('url地址', max_length=200)
     apiparamvalue = models.CharField('请求参数和值', max_length=800)
 
-    REQUEST_METHOID = (('0','get'),('1','post'),('2','put'),('3','delete'),('4','patch'))
-    apimethod = models.CharField(verbose_name='请求方法', choices=REQUEST_METHOID, default='0', max_length=200, null=True)
+    REQUEST_METHOID = (('get','get'),('post','post'),('put','put'),('delete','delete'),('patch','patch'))
+    apimethod = models.CharField(verbose_name='请求方法', choices=REQUEST_METHOID, default='get', max_length=200, null=True)
     apiresult = models.CharField('预期结果', max_length=200)
     apistatus = models.BooleanField('是否通过')
     create_time = models.DateTimeField('创建时间', auto_now=True)

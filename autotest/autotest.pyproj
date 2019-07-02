@@ -69,6 +69,9 @@
     <Compile Include="set\tests.py" />
     <Compile Include="set\setviews.py" />
     <Compile Include="set\__init__.py" />
+    <Compile Include="testcase\testcase1.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="webtest\admin.py" />
     <Compile Include="webtest\apps.py" />
     <Compile Include="webtest\migrations\__init__.py" />
@@ -3073,6 +3076,7 @@
     <Folder Include="bug\migrations\" />
     <Folder Include="bug\templates\" />
     <Folder Include="bug\templates\bug\" />
+    <Folder Include="testcase\" />
     <Folder Include="static\" />
     <Folder Include="product\" />
     <Folder Include="product\migrations\" />
