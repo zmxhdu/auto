@@ -30,6 +30,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="apitest\admin.py" />
+    <Compile Include="apitest\apiauto_testcase2.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="apitest\apps.py" />
     <Compile Include="apitest\migrations\__init__.py" />
     <Compile Include="apitest\models.py" />
@@ -70,6 +73,9 @@
     <Compile Include="set\setviews.py" />
     <Compile Include="set\__init__.py" />
     <Compile Include="testcase\testcase1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="testcase\testcase2.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="webtest\admin.py" />
