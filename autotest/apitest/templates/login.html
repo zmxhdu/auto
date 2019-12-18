@@ -6,14 +6,14 @@
     <title>Login</title>
 </head>
 <body>
-<h1>login</h1>
+<h1>自动化测试平台</h1>
 
 <form method="post" action="/login/">
     {% csrf_token %}
-    <br>  <input name="username" type="text" placeholder="username">
-    <br>  <input name="password" type="password" placeholder="password">
-    {{ error }}<br>
-    <br>  <button id="submit" type="submit">submit</button>
+    <br><a>&nbsp;&nbsp;用户名：</a> <input name="username" type="text" placeholder="test" />
+    <br><br><a>&nbsp;&nbsp;密&nbsp;&nbsp; 码：</a> <input name="password" type="password" placeholder="test123456" />
+    <br>{{ error }}<br>
+    &nbsp;<button style="width:220px;height:28px;" id="submit" type="submit">登录</button>
 </form>
 
 </body>
