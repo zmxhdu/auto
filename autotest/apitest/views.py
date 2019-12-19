@@ -29,7 +29,10 @@ def login(request):
 
 
 def home(request):
-    return render(request, 'home.html')
+    if request.user.is_authenticated:
+        return render(request, 'home.html')
+    else:
+        return render(request,'login.html', {'error': '请先登录'})
 
 
 def logout(request):

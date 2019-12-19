@@ -21,6 +21,16 @@
     <meta name="viewport" content="user-scalabel=no, width=device-width, initial-scale=1.0, maximum-sacle=1.0" />
     <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css" />
     <meta name="robots" content="NONE, NOARCHIVE" />
+
+    <script type="text/javascript">
+        function logout()
+            {
+                if (window.top!==window.self)
+                    {
+                        window.top.location="/logout"
+                    }
+            }
+    </script>
 </head>
 
 <body role="document">
@@ -31,7 +41,7 @@
         <ul class="nav justify-content-center"></ul>
         <ul class="nav justify-content-end">
             <li class="nav-link"><a style="color:white" href="#">{{ user }}</a></li>
-            <li class="nav-link"><a style="color:white" href="/logout/">退出</a></li>
+            <li class="nav-link"><a style="color:white" href="/logout/" onclick="logout()">退出</a></li>
         </ul>
     </div>
 </nav>
